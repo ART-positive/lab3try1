@@ -8,6 +8,9 @@ public class Clock extends Item {
     public Clock(int price, String nameItem, Location location, int hours, int minutes){
         super(price, nameItem, location);
         Pair time = new Pair(hours, minutes);
+        if (hours < 0 || hours > 12 || minutes < 0 || minutes > 59) {
+            throw new IllegalArgumentException("У " + nameItem + " некорректное время!");
+        }
         this.time = time;
         clockStruck(time);
     }

@@ -12,7 +12,13 @@ public abstract class Item implements Price, Name, Position {
     private Location location;
 
     public Item(int price, String nameItem, String nameLocation, int x, int y) {
+        if (price < 0) {
+            throw new NumberFormatException("Цена не может быть отрицательной!");
+        }
         this.price = price;
+        if ((nameItem == null) || (nameItem.isEmpty())) {
+            throw new IllegalArgumentException("Некорректное название предмета!");
+        }
         this.name = nameItem;
         this.location = new Location(nameLocation, x, y);
     }

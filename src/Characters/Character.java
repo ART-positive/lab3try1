@@ -14,7 +14,13 @@ public abstract class Character implements Name, Position {
     private int age;
     private Location location;
     public Character(String name, int age, Location location) {
+        if ((name == null) || (name.isEmpty())) {
+            throw new IllegalArgumentException("Некорректное имя!");
+        }
         this.name = name;
+        if (age < 0) {
+            throw new NumberFormatException("Возраст не может быть отрицательным!");
+        }
         this.age = age;
         this.location = location;
     }
@@ -55,6 +61,10 @@ public abstract class Character implements Name, Position {
             System.out.println(this.getName() + " остановился перед " + sofa1.getName());
             this.location = sofa1.getLocation();
         }
+    }
+    public void walk(Location finish){
+        System.out.println(this.getName() + " дошёл до локации " + finish.getName());
+        this.location = finish;
     }
     public void takeWeaponRunIncident(Location finish) {
         System.out.println(this.getName() + " взял " + Weapon.getRandomWeapon() + " и побежал в локацию " + finish.getName());

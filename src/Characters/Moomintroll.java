@@ -1,6 +1,6 @@
 package Characters;
 
-import Pairs.Pair;
+
 import Items.*;
 import Locations.*;
 public class Moomintroll extends Character {

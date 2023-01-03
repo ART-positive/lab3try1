@@ -8,6 +8,9 @@ public class Person extends Character {
 
     public Person(String name, int age, String gender, Location location) {
         super(name, age, location);
+        if ((gender == null) || (gender.isEmpty())) {
+            throw new IllegalArgumentException("У " + name + " некорректный гендер!");
+        }
         this.gender = gender;
     }
 

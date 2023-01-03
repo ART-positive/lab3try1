@@ -9,6 +9,9 @@ public class Sofa extends Item {
     private static boolean Alarm = false;
     public Sofa(String color, int price, String nameItem, Location location){
         super(price, nameItem, location);
+        if ((color == null) || (color.isEmpty())) {
+            throw new IllegalArgumentException("Некорректное название цвета!");
+        }
         this.color = color;
     }
 
