@@ -43,6 +43,9 @@ public abstract class Character implements Name, Position {
     public void setLocation(Location location){
         this.location = location;
     }
+    public Location getLocation(){
+        return this.location;
+    }
     public int getAge(){
         return this.age;
     }
@@ -99,7 +102,6 @@ public abstract class Character implements Name, Position {
     }
     @Override
     public void getPositionPrint(){
-        String s = this.name;
         System.out.println(this.name + " находиться на локации " + this.location.getName());
     }
     @Override

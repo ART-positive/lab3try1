@@ -3,17 +3,25 @@ package Characters;
 import Items.*;
 import Locations.*;
 
+import java.util.ArrayList;
+
 public class Person extends Character {
     private String gender;
 
+    protected static ArrayList<Person> People = new ArrayList<>();
     public Person(String name, int age, String gender, Location location) {
         super(name, age, location);
         if ((gender == null) || (gender.isEmpty())) {
             throw new IllegalArgumentException("У " + name + " некорректный гендер!");
         }
         this.gender = gender;
+        Person per = new Person(name, age, location, gender);
+        People.add(per);
     }
-
+    private Person(String name, int age, Location location, String gender) {
+        super(name, age, location);
+        this.gender = gender;
+    }
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;

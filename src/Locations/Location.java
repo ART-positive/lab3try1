@@ -1,6 +1,7 @@
 package Locations;
 
 import Interfaces.Name;
+import Interfaces.Position;
 import Items.Clock;
 import Pairs.Pair;
 
@@ -42,5 +43,10 @@ public class Location implements Name {
     public String getName() {
         return this.name;
     }
+
+    public void setCoordinates(Pair pair) {
+        this.pair = pair;
+    }
+
 
 }

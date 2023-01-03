@@ -28,9 +28,6 @@ public abstract class Item implements Price, Name, Position {
         this.location = location2;
     }
 
-    public Item() {
-
-    }
 
     @Override
     public String getName() {
@@ -53,8 +50,10 @@ public abstract class Item implements Price, Name, Position {
     public int getPrice(){
         return this.price;
     }
-
-
+    public void setCoordinates(){
+        Pair pr = new Pair(location.getCoordinates().geta() + 1, location.getCoordinates().getb() - 2);
+        location.setCoordinates(pr);
+    }
     @Override
     public void changePrice(int newPrice){
         this.price = newPrice;

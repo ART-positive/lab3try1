@@ -66,10 +66,22 @@ public class Clock extends Item {
             clockStruck(new Pair(Hours, 0));
         }
         Pair time = new Pair(Hours, minutes);
-        System.out.println("Часы показывают " + Hours + " часа и " + minutes + " минут");
+        String shours;
+        shours = switch (Hours) {
+            case 1 -> "";
+            case 2, 3, 4 -> "а";
+            default -> "ов";
+        };
+        String sminutes = "";
+        if(minutes <= 10 || minutes >= 14)
+            sminutes = switch (minutes % 10) {
+                case 1 -> "a";
+                case 2, 3, 4 -> "ы";
+                default -> "";
+            };
+        System.out.println("Часы показывают " + Hours + " час" + shours + " и " + minutes + " минут" + sminutes);
         this.time = time;
     }
-
     private void clockStruck(Pair time){
         if(time.getb() == 0){
             String s;
