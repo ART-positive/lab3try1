@@ -25,7 +25,24 @@ public class Moomintroll extends Character {
         return "Moomintroll: "
                 + "Name = '" + getName() + '\''
                 + ", age = " + getAge()
-                + ", location = " + getPositionStr();
+                + ", location = " + getPositionStr() + '\'';
+    }
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null) return false;
+        if (this.getClass() != object.getClass()) return false;
+        return this.getAge() == ((Moomintroll) object).getAge()
+                && this.getPosition() == ((Moomintroll) object).getPosition()
+                && this.gun.hashCode() == ((Moomintroll) object).getGun().hashCode();
+    }
+    @Override
+    public int hashCode() {
+        int result = getName() == null ? 0 : getName().hashCode();
+        result = 31 * result + getAge();
+        result += 31 * result + this.getPosition().hashCode();
+        result += 31 * result + this.getGun().hashCode();
+        return result;
     }
     public void setAlarm(Sofa sf1){
         String cout = "Moomintroll " + this.getName() + " установил звонок тревожной сигнализации возле предмета " + sf1.getName();
@@ -38,11 +55,13 @@ public class Moomintroll extends Character {
     }
     public void takeGun(Gun gun) throws DifferentLocationsFailException {
         System.out.println("Moomintroll " + this.getName() + " взял оружие " + gun.getName());
-        gun.getLocation();
         if(gun.getLocation() != this.getLocation())
             throw new DifferentLocationsFailException(
                     this.getName() + " и " + gun.getName() + " находяться в разных локациях");
         this.gun = gun;
+    }
+    public Gun getGun() {
+        return this.gun;
     }
     public void screaming(String s){
         System.out.println("Moomintroll " + this.getName() + " кричит : \'" + s + "\'");

@@ -1,14 +1,11 @@
 import Characters.Moomintroll;
 import Characters.Person;
 import Characters.Traveler;
-import Exceptions.SameGroupMembersFailException;
-import Interfaces.DuskFallen;
+import Interfaces.Fallen;
 import Items.Clock;
 import Items.Gun;
 import Items.Sofa;
 import Locations.Location;
-
-import java.security.PrivilegedExceptionAction;
 
 public class Scene {
     public static void main(String[] args) throws Exception {
@@ -47,15 +44,15 @@ public class Scene {
         mom.screaming("Кофе готов!");
         trs.runAndHide(cellar);
         trs.getHome(hall);
-        DuskFallen dusk = new DuskFallen() {
+        Fallen duskFallen = new Fallen() {
             @Override
-            public void duskFallen() {
+            public void fallen() {
                 clock1.passedTime(2, 11);
                 System.out.println("Наступили сумерки");
                 trs.runAndHide(wardrobe);
             }
         };
-        dusk.duskFallen();
+        duskFallen.fallen();
         dad.walk(livingRoom);
         dad.setAlarm(sf1);
         clock1.passedTime(1, 14);
@@ -78,12 +75,15 @@ public class Scene {
         System.out.println(clock1.toString());
         System.out.println(sf1.toString());
 
-        Sofa sf2 = new Sofa("gray", 13500, "Раскладной диван", livingRoom);
+        Sofa sf2 = new Sofa("blue", 13500, "Раскладной диван", livingRoom);
         System.out.println(sf1.hashCode());
         System.out.println(sf2.hashCode());
-        Clock clock2 = new Clock(1299, "Настенный часы", bedroom, 11, 40);
+        Clock clock2 = new Clock(1299, "Настенный часы", bedroom, 2, 7);
         System.out.println(clock1.equals(clock2));
         clock2.setTime(2, 18);
         System.out.println(clock1.equals(clock2));
+
+        Sofa.Pillow pl = sf2.new Pillow("material", 60, 90);
+        System.out.println(pl.getSofa());
     }
 }

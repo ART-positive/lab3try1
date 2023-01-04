@@ -45,11 +45,14 @@ public class Person extends Character {
                 + "Name = '" + getName() + '\''
                 + ", age = " + getAge()
                 + ", gender = " + this.gender
-                + ", location = " + getPositionStr();
+                + ", location = " + getPositionStr() + '\'';
     }
 
     public String getGender(){
         return this.gender;
+    }
+    public void changeGender(String gender){
+        this.gender = gender;
     }
 
     public void activatedAlarm(Sofa sofa) {

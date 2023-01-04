@@ -19,7 +19,7 @@ public class Clock extends Item {
         return "Clock: "
                 + "Name = '" + getName() + '\''
                 + ", price = " + getPrice()
-                + ", location = " + getPositionStr()
+                + ", location = " + getPositionStr() + '\''
                 + ", time = " + this.time.geta() + ":" + this.time.getb();
     }
     @Override
@@ -51,6 +51,7 @@ public class Clock extends Item {
         System.out.println(getName() + " находяться на локации " + getLocation().getName());
     }
     public void passedTime(int hours, int minutes){
+        if (hours < 0 || minutes < 0) throw new IllegalArgumentException("Время не может быть отрицательным!");
         int Hours = this.time.geta();
         while(hours != 0){
             Hours++;
@@ -66,20 +67,37 @@ public class Clock extends Item {
             clockStruck(new Pair(Hours, 0));
         }
         Pair time = new Pair(Hours, minutes);
-        String shours;
-        shours = switch (Hours) {
-            case 1 -> "";
-            case 2, 3, 4 -> "а";
-            default -> "ов";
-        };
-        String sminutes = "";
-        if(minutes <= 10 || minutes >= 14)
-            sminutes = switch (minutes % 10) {
-                case 1 -> "a";
-                case 2, 3, 4 -> "ы";
-                default -> "";
-            };
-        System.out.println("Часы показывают " + Hours + " час" + shours + " и " + minutes + " минут" + sminutes);
+        class PrintTime{
+            private int hours;
+            private int minutes;
+            public PrintTime(int hours, int minutes){
+                this.hours = hours;
+                this.minutes = minutes;
+            }
+
+            public String printHours(){
+                String shours;
+                shours = switch (hours) {
+                    case 1 -> "";
+                    case 2, 3, 4 -> "а";
+                    default -> "ов";
+                };
+                return Integer.toString(hours) + " час" + shours + " ";
+            }
+
+            public String printMinutes(){
+                String sminutes = "";
+                if(minutes <= 10 || minutes >= 14)
+                    sminutes = switch (minutes % 10) {
+                        case 1 -> "a";
+                        case 2, 3, 4 -> "ы";
+                        default -> "";
+                    };
+                return Integer.toString(minutes) + " минут" + sminutes + " ";
+            }
+        }
+        PrintTime pr = new PrintTime(time.geta(), time.getb());
+        System.out.println("Часы показывают " + pr.printHours() + pr.printMinutes());
         this.time = time;
     }
     private void clockStruck(Pair time){

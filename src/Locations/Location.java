@@ -7,7 +7,7 @@ import Pairs.Pair;
 
 
 public class Location implements Name {
-    private String name;
+    private final String name;
     private Pair pair;
 
     public Location(String name, int x, int y){

@@ -9,7 +9,26 @@ public class Gun extends Item{
     }
 
     @Override
-    public Location getLocation(){
-        return super.getLocation();
+    public String toString() {
+        return "Gun: "
+                + "Name = '" + getName() + '\''
+                + ", price = " + getPrice()
+                + ", location = " + getPositionStr();
+    }
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null) return false;
+        if (this.getClass() != object.getClass()) return false;
+        return  this.getPosition().geta() == ((Gun) object).getPosition().geta()
+                && this.getPosition().geta() == ((Gun) object).getPosition().getb()
+                && this.getPrice() == ((Gun) object).getPrice();
+    }
+    @Override
+    public int hashCode() {
+        int result = getPrice();
+        result = 31 * result + getName().hashCode();
+        result = 31 * result + getLocation().hashCode();
+        return result;
     }
 }

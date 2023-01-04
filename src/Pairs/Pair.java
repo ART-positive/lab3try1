@@ -1,5 +1,7 @@
 package Pairs;
 
+import Locations.Location;
+
 public class Pair{
     private int a;
     private int b;
@@ -15,5 +17,26 @@ public class Pair{
 
     public int getb() {
         return this.b;
+    }
+
+    @Override
+    public String toString() {
+        return "Pair: "
+                + "First element = '" + geta() + '\''
+                + ", Second element = " + geta() + '\'';
+    }
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null) return false;
+        if (this.getClass() != object.getClass()) return false;
+        return  this.geta() == ((Pair) object).geta()
+                && this.getb() == ((Pair) object).getb();
+    }
+    @Override
+    public int hashCode() {
+        int result = 29 * this.geta();
+        result += 31 * this.getb();
+        return result;
     }
 }

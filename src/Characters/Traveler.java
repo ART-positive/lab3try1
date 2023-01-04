@@ -27,6 +27,11 @@ public class Traveler extends Character  {
             travelers.add(tr1);
             travelers.add(tr2);
         }
+        public void printMembers(){
+            for (Traveler i : this.travelers) {
+                System.out.print(i.getName() + " ");
+            }
+        }
         public GroupTravelers(Traveler tr1, Traveler tr2, Traveler tr3) throws SameGroupMembersFailException {
             if(tr1.hashCode() == tr2.hashCode() || tr2.hashCode() == tr3.hashCode() || tr1.hashCode() == tr3.hashCode())
                 throw new SameGroupMembersFailException("В одной группе не может быть два одинаковых путника!");
@@ -43,6 +48,9 @@ public class Traveler extends Character  {
                     mp.put(i, 1);
             }
             Collections.addAll(travelers, trs);
+        }
+        public void addTravelor(Traveler traveler){
+            travelers.add(traveler);
         }
 
         public void walk(Location location){
@@ -72,5 +80,28 @@ public class Traveler extends Character  {
     public void walk(Location finish){
         System.out.println(this.getName() + " дошёл до локации " + finish.getName());
         this.setLocation(finish);
+    }
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null) return false;
+        if (this.getClass() != object.getClass()) return false;
+        return this.getAge() == ((Traveler) object).getAge()
+                && this.getPosition() == ((Traveler) object).getPosition();
+    }
+    @Override
+    public int hashCode() {
+        int result = getName() == null ? 0 : getName().hashCode();
+        result = 31 * result + getAge();
+        result += this.getPosition().hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Traveler: "
+                + "Name = '" + getName() + '\''
+                + ", age = " + getAge()
+                + ", location = " + getPositionStr() + '\'';
     }
 }
