@@ -13,7 +13,7 @@ public class Gun extends Item{
         return "Gun: "
                 + "Name = '" + getName() + '\''
                 + ", price = " + getPrice()
-                + ", location = " + getPositionStr();
+                + ", location = " + getPositionName();
     }
     @Override
     public boolean equals(Object object) {

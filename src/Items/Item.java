@@ -39,7 +39,7 @@ public abstract class Item implements Price, Name, Position {
         System.out.println(this.name + " находиться на локации " + this.location.getName());
     }
     @Override
-    public String getPositionStr(){
+    public String getPositionName(){
         return this.location.getName();
     }
     @Override
@@ -50,8 +50,8 @@ public abstract class Item implements Price, Name, Position {
     public int getPrice(){
         return this.price;
     }
-    public void setCoordinates(){
-        Pair pr = new Pair(location.getCoordinates().geta() + 1, location.getCoordinates().getb() - 2);
+    public void changeCoordinates(int x, int y){
+        Pair pr = new Pair(location.getCoordinates().geta() + x, location.getCoordinates().getb() + y);
         location.setCoordinates(pr);
     }
     @Override

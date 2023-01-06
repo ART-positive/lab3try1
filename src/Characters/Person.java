@@ -45,7 +45,7 @@ public class Person extends Character {
                 + "Name = '" + getName() + '\''
                 + ", age = " + getAge()
                 + ", gender = " + this.gender
-                + ", location = " + getPositionStr() + '\'';
+                + ", location = " + getPositionName() + '\'';
     }
 
     public String getGender(){

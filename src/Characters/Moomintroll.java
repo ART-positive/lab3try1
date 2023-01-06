@@ -25,7 +25,7 @@ public class Moomintroll extends Character {
         return "Moomintroll: "
                 + "Name = '" + getName() + '\''
                 + ", age = " + getAge()
-                + ", location = " + getPositionStr() + '\'';
+                + ", location = " + getPositionName() + '\'';
     }
     @Override
     public boolean equals(Object object) {
@@ -51,7 +51,7 @@ public class Moomintroll extends Character {
     }
     public void barredDoor(Sofa sf){
         System.out.println("Moomintroll " + this.getName() + " загородил дверь предметом " + sf.getName());
-        sf.setCoordinates();
+        sf.changeCoordinates(1, -2);
     }
     public void takeGun(Gun gun) throws DifferentLocationsFailException {
         System.out.println("Moomintroll " + this.getName() + " взял оружие " + gun.getName());

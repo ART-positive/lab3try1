@@ -102,6 +102,6 @@ public class Traveler extends Character  {
         return "Traveler: "
                 + "Name = '" + getName() + '\''
                 + ", age = " + getAge()
-                + ", location = " + getPositionStr() + '\'';
+                + ", location = " + getPositionName() + '\'';
     }
 }

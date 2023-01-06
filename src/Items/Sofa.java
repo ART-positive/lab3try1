@@ -69,7 +69,7 @@ public class Sofa extends Item {
         return "Sofa: "
                 + "Name = '" + getName() + '\''
                 + ", price = " + getPrice()
-                + ", location = " + getPositionStr() + '\''
+                + ", location = " + getPositionName() + '\''
                 + ", color = " + getColor();
     }
     @Override

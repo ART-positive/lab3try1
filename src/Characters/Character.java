@@ -109,7 +109,7 @@ public abstract class Character implements Name, Position {
         return this.location.getCoordinates();
     }
     @Override
-    public String getPositionStr(){
+    public String getPositionName(){
         return this.location.getName();
     }
     @Override

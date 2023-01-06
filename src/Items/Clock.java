@@ -19,7 +19,7 @@ public class Clock extends Item {
         return "Clock: "
                 + "Name = '" + getName() + '\''
                 + ", price = " + getPrice()
-                + ", location = " + getPositionStr() + '\''
+                + ", location = " + getPositionName() + '\''
                 + ", time = " + this.time.geta() + ":" + this.time.getb();
     }
     @Override
