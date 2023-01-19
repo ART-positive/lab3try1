@@ -1,17 +1,13 @@
-package Characters;
+package characters;
 
-import Exceptions.SameGroupMembersFailException;
-import Items.Sofa;
-import Locations.Location;
-
+import exceptions.SameGroupMembersFailException;
+import locations.Location;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.io.*;
-import java.util.*;
 
-import static Characters.Person.People;
+import static characters.Person.People;
 
 public class Traveler extends Character  {
 
@@ -21,24 +17,6 @@ public class Traveler extends Character  {
     public static class GroupTravelers {
         private ArrayList<Traveler> travelers = new ArrayList<>();
 
-        public GroupTravelers(Traveler tr1, Traveler tr2) throws SameGroupMembersFailException {
-            if(tr1.hashCode() == tr2.hashCode())
-                throw new SameGroupMembersFailException("В одной группе не может быть два одинаковых путника!");
-            travelers.add(tr1);
-            travelers.add(tr2);
-        }
-        public void printMembers(){
-            for (Traveler i : this.travelers) {
-                System.out.print(i.getName() + " ");
-            }
-        }
-        public GroupTravelers(Traveler tr1, Traveler tr2, Traveler tr3) throws SameGroupMembersFailException {
-            if(tr1.hashCode() == tr2.hashCode() || tr2.hashCode() == tr3.hashCode() || tr1.hashCode() == tr3.hashCode())
-                throw new SameGroupMembersFailException("В одной группе не может быть два одинаковых путника!");
-            travelers.add(tr1);
-            travelers.add(tr2);
-            travelers.add(tr3);
-        }
         public GroupTravelers(Traveler... trs) throws SameGroupMembersFailException {
             Map<Traveler, Integer> mp = new HashMap<>();
             for (Traveler i : trs) {
@@ -49,10 +27,50 @@ public class Traveler extends Character  {
             }
             Collections.addAll(travelers, trs);
         }
+        @Override
+        public String toString(){
+            StringBuilder s = new StringBuilder();
+            for (Traveler i : this.travelers) {
+                s.append(i.getName()).append(" ");
+            }
+            return s.toString();
+        }
+        @Override
+        public boolean equals(Object object) {
+            if (this == object) return true;
+            if (object == null) return false;
+            if (this.getClass() != object.getClass()) return false;
+            Map<Traveler, Integer> mp = new HashMap<>();
+            for (Traveler i : travelers) {
+                mp.put(i, 1);
+            }
+            for (Traveler i : ((GroupTravelers) object).getGroupTravelers()) {
+                if(mp.containsKey(i))
+                    mp.put(i, 0);
+                else
+                    return false;
+            }
+            for(Map.Entry<Traveler, Integer> pair : mp.entrySet())
+            {
+                Integer value = pair.getValue();
+                if(value != 0) return false;
+            }
+            return true;
+        }
+        @Override
+        public int hashCode() {
+            int result = 0;
+            for (Traveler i : travelers) {
+                result += 31 * i.hashCode();
+            }
+            return result;
+        }
         public void addTravelor(Traveler traveler){
             travelers.add(traveler);
         }
-
+        public ArrayList<Traveler> getGroupTravelers(){
+            return this.travelers;
+        }
         public void walk(Location location){
             for (Traveler i : this.travelers) {
                 i.walk(location);

@@ -1,9 +1,7 @@
-package Locations;
+package locations;
 
-import Interfaces.Name;
-import Interfaces.Position;
-import Items.Clock;
-import Pairs.Pair;
+import interfaces.Name;
+import pairs.Pair;
 
 
 public class Location implements Name {

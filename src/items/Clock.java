@@ -1,7 +1,7 @@
-package Items;
+package items;
 
-import Locations.Location;
-import Pairs.Pair;
+import locations.Location;
+import pairs.Pair;
 public class Clock extends Item {
     private Pair time;
 
@@ -67,10 +67,10 @@ public class Clock extends Item {
             clockStruck(new Pair(Hours, 0));
         }
         Pair time = new Pair(Hours, minutes);
-        class PrintTime{
+        class TimeName{
             private int hours;
             private int minutes;
-            public PrintTime(int hours, int minutes){
+            public TimeName(int hours, int minutes){
                 this.hours = hours;
                 this.minutes = minutes;
             }
@@ -96,7 +96,7 @@ public class Clock extends Item {
                 return Integer.toString(minutes) + " минут" + sminutes + " ";
             }
         }
-        PrintTime pr = new PrintTime(time.geta(), time.getb());
+        TimeName pr = new TimeName(time.geta(), time.getb());
         System.out.println("Часы показывают " + pr.printHours() + pr.printMinutes());
         this.time = time;
     }

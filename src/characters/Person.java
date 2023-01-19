@@ -1,7 +1,7 @@
-package Characters;
+package characters;
 
-import Items.*;
-import Locations.*;
+import items.*;
+import locations.*;
 
 import java.util.ArrayList;
 

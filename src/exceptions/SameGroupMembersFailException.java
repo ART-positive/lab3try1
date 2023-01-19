@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 public class SameGroupMembersFailException extends Exception{
     public SameGroupMembersFailException(String message) {

@@ -1,14 +1,16 @@
-import Characters.Moomintroll;
-import Characters.Person;
-import Characters.Traveler;
-import Interfaces.Fallen;
-import Items.Clock;
-import Items.Gun;
-import Items.Sofa;
-import Locations.Location;
+import characters.Moomintroll;
+import characters.Person;
+import characters.Traveler;
+import exceptions.DifferentLocationsFailException;
+import exceptions.SameGroupMembersFailException;
+import interfaces.Fallen;
+import items.Clock;
+import items.Gun;
+import items.Sofa;
+import locations.Location;
 
 public class Scene {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws DifferentLocationsFailException, SameGroupMembersFailException {
         // обьекты
         Location porch = new Location("Крыльцо", 13, 24);
         Location outdoor = new Location("Улица", 4, 7);
@@ -52,6 +54,13 @@ public class Scene {
                 trs.runAndHide(wardrobe);
             }
         };
+        /*
+        Fallen duskFallen = () -> {
+            clock1.passedTime(2, 11);
+            System.out.println("Наступили сумерки");
+            trs.runAndHide(wardrobe);
+        };
+         */
         duskFallen.fallen();
         dad.walk(livingRoom);
         dad.setAlarm(sf1);

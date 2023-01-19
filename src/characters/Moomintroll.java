@@ -1,11 +1,9 @@
-package Characters;
+package characters;
 
 
-import Exceptions.DifferentLocationsFailException;
-import Items.*;
-import Locations.*;
-
-import java.util.ArrayList;
+import exceptions.DifferentLocationsFailException;
+import items.*;
+import locations.*;
 
 public class Moomintroll extends Character {
 

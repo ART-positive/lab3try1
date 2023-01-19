@@ -1,5 +1,5 @@
-package Interfaces;
-import Pairs.Pair;
+package interfaces;
+import pairs.Pair;
 
 public interface Position {
     Pair getPosition();

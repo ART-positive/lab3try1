@@ -1,10 +1,10 @@
-package Items;
+package items;
 
-import Interfaces.Name;
-import Interfaces.Position;
-import Interfaces.Price;
-import Locations.Location;
-import Pairs.Pair;
+import interfaces.Name;
+import interfaces.Position;
+import interfaces.Price;
+import locations.Location;
+import pairs.Pair;
 
 public abstract class Item implements Price, Name, Position {
     private int price;

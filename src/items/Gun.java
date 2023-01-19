@@ -1,6 +1,6 @@
-package Items;
+package items;
 
-import Locations.Location;
+import locations.Location;
 
 public class Gun extends Item{
 

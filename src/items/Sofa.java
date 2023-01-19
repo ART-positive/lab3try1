@@ -1,10 +1,8 @@
-package Items;
+package items;
 import java.lang.*;
 
-import Interfaces.Name;
-import Interfaces.Position;
-import Locations.Location;
-import Pairs.Pair;
+import locations.Location;
+import pairs.Pair;
 
 public class Sofa extends Item {
     private final String color;

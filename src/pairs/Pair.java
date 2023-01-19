@@ -1,6 +1,4 @@
-package Pairs;
-
-import Locations.Location;
+package pairs;
 
 public class Pair{
     private int a;

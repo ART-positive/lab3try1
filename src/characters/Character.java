@@ -1,13 +1,12 @@
-package Characters;
+package characters;
 
-import Enums.Panic;
-import Enums.Weapon;
-import Interfaces.Name;
-import Interfaces.Position;
-import Items.Clock;
-import Items.Sofa;
-import Pairs.Pair;
-import Locations.*;
+import enums.Panic;
+import enums.Weapon;
+import interfaces.Name;
+import interfaces.Position;
+import items.Sofa;
+import pairs.Pair;
+import locations.*;
 
 public abstract class Character implements Name, Position {
     private String name;
