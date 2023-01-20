@@ -44,7 +44,13 @@ public class Scene {
         System.out.println("------------------------Начало истории------------------------");
         trs.walk(porch);
         mom.screaming("Кофе готов!");
-        trs.runAndHide(cellar);
+        try {
+            trs.runAndHide(cellar);
+        }
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println(e);
+            System.out.println("Ошибка!");
+        }
         trs.getHome(hall);
         Fallen duskFallen = new Fallen() {
             @Override
@@ -63,7 +69,8 @@ public class Scene {
             dad.takeGun(rifle);
         }
         catch (DifferentLocationsFailException e) {
-            System.out.println("Разные локации!");
+            System.out.println(e.getMessage());
+            System.out.println("Ошибка!");
         }
         dad.walk(veranda);
         dad.barredDoor(sf1);

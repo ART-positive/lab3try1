@@ -2,6 +2,7 @@ package characters;
 
 
 import exceptions.DifferentLocationsFailException;
+import exceptions.NullPointerRuntimeException;
 import items.*;
 import locations.*;
 
@@ -43,6 +44,8 @@ public class Moomintroll extends Character {
         return result;
     }
     public void setAlarm(Sofa sf1){
+        if(sf1 == null)
+            throw new NullPointerRuntimeException("arguments is null");
         String cout = "Moomintroll " + this.getName() + " установил звонок тревожной сигнализации возле предмета " + sf1.getName();
         System.out.println(cout);
         sf1.setAlarm();
