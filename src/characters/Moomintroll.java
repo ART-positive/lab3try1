@@ -49,7 +49,7 @@ public class Moomintroll extends Character {
     }
     public void barredDoor(Sofa sf){
         System.out.println("Moomintroll " + this.getName() + " загородил дверь предметом " + sf.getName());
-        sf.changeCoordinates(1, -2);
+        sf.changeCoordinates(3, 3);
     }
     public void takeGun(Gun gun) throws DifferentLocationsFailException {
         System.out.println("Moomintroll " + this.getName() + " взял оружие " + gun.getName());

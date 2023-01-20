@@ -51,7 +51,7 @@ public abstract class Item implements Price, Name, Position {
         return this.price;
     }
     public void changeCoordinates(int x, int y){
-        Pair pr = new Pair(location.getCoordinates().geta() + x, location.getCoordinates().getb() + y);
+        Pair pr = new Pair(x, y);
         location.setCoordinates(pr);
     }
     @Override
