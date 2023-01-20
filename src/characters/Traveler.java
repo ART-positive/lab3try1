@@ -55,7 +55,7 @@ public class Traveler extends Character  {
                 Integer value = pair.getValue();
                 if(value != 0) return false;
             }
-            System.out.println(travelers.get(travelers.size() + 1).toString());
+            //System.out.println(travelers.get(travelers.size() + 1).toString());
             return true;
         }
         @Override
@@ -81,7 +81,7 @@ public class Traveler extends Character  {
             System.out.println("Путников приняли в Муми-дом");
             this.walk(location);
         }
-        public void runAndHide(Location location) throws ArrayIndexOutOfBoundsException{
+        public void runAndHide(Location location) {
             for (Traveler i : this.travelers) {
                 System.out.println(i.getName() + " перепугался и спрятaлся в локации " + location.getName());
                 i.setLocation(location);
@@ -90,6 +90,8 @@ public class Traveler extends Character  {
             int n = (int)Math.floor(Math.random() * People.size());
             int n1 = (int)Math.floor(Math.random() * People.size());
             while(n == n1) n1 = (int)Math.floor(Math.random() * People.size());
+            if(n >= People.size() || n < 0 || n1 < 0 || n1 >= People.size())
+                throw new ArrayIndexOutOfBoundsException("Выход за пределы массива!");
             People.get(n).walk(location);
             People.get(n1).walk(location);
         }

@@ -59,7 +59,12 @@ public class Scene {
         dad.setAlarm(sf1);
         clock1.passedTime(1, 14);
         dad.walk(barn);
-        dad.takeGun(rifle);
+        try{
+            dad.takeGun(rifle);
+        }
+        catch (DifferentLocationsFailException e) {
+            System.out.println("Разные локации!");
+        }
         dad.walk(veranda);
         dad.barredDoor(sf1);
         clock1.passedTime(2, 12);
