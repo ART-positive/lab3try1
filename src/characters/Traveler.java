@@ -1,5 +1,6 @@
 package characters;
 
+import exceptions.ArrayIndexOutOfBoundsException;
 import exceptions.SameGroupMembersFailException;
 import locations.Location;
 import java.util.ArrayList;
