@@ -10,7 +10,7 @@ import items.Sofa;
 import locations.Location;
 
 public class Scene {
-    public static void main(String[] args) throws DifferentLocationsFailException, SameGroupMembersFailException {
+    public static void main(String[] args) throws Exception {
         // обьекты
         Location porch = new Location("Крыльцо", 13, 24);
         Location outdoor = new Location("Улица", 4, 7);
@@ -54,13 +54,6 @@ public class Scene {
                 trs.runAndHide(wardrobe);
             }
         };
-        /*
-        Fallen duskFallen = () -> {
-            clock1.passedTime(2, 11);
-            System.out.println("Наступили сумерки");
-            trs.runAndHide(wardrobe);
-        };
-         */
         duskFallen.fallen();
         dad.walk(livingRoom);
         dad.setAlarm(sf1);
@@ -78,7 +71,10 @@ public class Scene {
         per3.takeWeaponRunIncident(livingRoom);
         per4.takeWeaponRunIncident(livingRoom);
         System.out.println("------------------------Конец истории------------------------");
+        Traveler.GroupTravelers trs2 = new Traveler.GroupTravelers(visla, tofla);
+        System.out.println(trs.equals(trs2));
         // проверка дополнительных функций, которых не было в истории
+        /*
         System.out.println(per3.toString());
         System.out.println(mom.toString());
         System.out.println(clock1.toString());
@@ -94,5 +90,6 @@ public class Scene {
 
         Sofa.Pillow pl = sf2.new Pillow("material", 60, 90);
         System.out.println(pl.getSofa());
+         */
     }
 }

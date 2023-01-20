@@ -36,7 +36,7 @@ public class Traveler extends Character  {
             return s.toString();
         }
         @Override
-        public boolean equals(Object object) {
+        public boolean equals(Object object) throws ArrayIndexOutOfBoundsException {
             if (this == object) return true;
             if (object == null) return false;
             if (this.getClass() != object.getClass()) return false;
@@ -55,6 +55,7 @@ public class Traveler extends Character  {
                 Integer value = pair.getValue();
                 if(value != 0) return false;
             }
+            System.out.println(travelers.get(travelers.size() + 1).toString());
             return true;
         }
         @Override
@@ -80,7 +81,7 @@ public class Traveler extends Character  {
             System.out.println("Путников приняли в Муми-дом");
             this.walk(location);
         }
-        public void runAndHide(Location location){
+        public void runAndHide(Location location) throws ArrayIndexOutOfBoundsException{
             for (Traveler i : this.travelers) {
                 System.out.println(i.getName() + " перепугался и спрятaлся в локации " + location.getName());
                 i.setLocation(location);
